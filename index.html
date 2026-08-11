@@ -12,7 +12,7 @@
 .hero{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:26px;border-radius:26px;box-shadow:var(--shadow);margin-bottom:18px}.hero-row{display:flex;justify-content:space-between;gap:20px;align-items:center}.hero h1{font-size:34px;margin:3px 0}.hero p{margin:5px 0;opacity:.9}.bunny{font-size:70px}.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:18px}.stat{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:15px;box-shadow:var(--shadow)}.stat-label{font-size:12px;color:var(--muted);font-weight:700}.stat-value{font-size:25px;font-weight:900;margin-top:5px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow)}.grid2{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}.section-head h2{margin:0}.btn{padding:10px 14px;border-radius:11px;background:#eeeae3;color:var(--text);font-weight:800}.btn.primary{background:var(--accent);color:#fff}.btn.danger{background:#ffe7e7;color:var(--red)}.btn.green{background:#e2f5eb;color:#277c51}.btn.small{padding:7px 10px;font-size:13px}.muted{color:var(--muted)}
 .progress{height:10px;background:#ebe6dd;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:inherit}
-.timer{text-align:center}.timer-display{font-size:clamp(54px,8vw,92px);font-weight:900;letter-spacing:2px;margin:12px 0}.timer-controls{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.timer-input{display:flex;justify-content:center;gap:8px;align-items:center}.timer-input input{width:90px;text-align:center;padding:10px;border:1px solid var(--line);border-radius:11px;background:var(--card)}.presets{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin:14px 0}.preset{padding:7px 12px;border-radius:10px;background:#f0ece6;font-weight:750}.preset.active{background:#e9e4ff;color:var(--accent)}
+.timer{text-align:center}.session-history{display:flex;flex-direction:column;gap:10px}.session-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:var(--panel)}.session-row strong{display:block}.session-meta{font-size:12px;color:var(--muted);margin-top:3px}.session-empty{padding:12px;border:1px dashed var(--border);border-radius:10px;color:var(--muted)}.timer-display{font-size:clamp(54px,8vw,92px);font-weight:900;letter-spacing:2px;margin:12px 0}.timer-controls{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.timer-input{display:flex;justify-content:center;gap:8px;align-items:center}.timer-input input{width:90px;text-align:center;padding:10px;border:1px solid var(--line);border-radius:11px;background:var(--card)}.presets{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin:14px 0}.preset{padding:7px 12px;border-radius:10px;background:#f0ece6;font-weight:750}.preset.active{background:#e9e4ff;color:var(--accent)}
 .input{border:1px solid var(--line);background:var(--card);border-radius:11px;padding:10px 12px;color:var(--text);outline:none}.task-add{display:flex;gap:8px}.task-add input{flex:1}.task-list{display:grid;gap:8px;margin-top:14px}.task{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid var(--line);border-radius:12px}.task.done .task-text{text-decoration:line-through;color:var(--muted)}.task-text{flex:1}.task-delete{color:var(--red);background:transparent;font-weight:900}
 .calendar-filter{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}.filter{padding:8px 11px;background:#eeeae3;border-radius:10px;font-weight:750}.filter.active{background:#e9e4ff;color:var(--accent)}.calendar-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}.month-title{font-size:20px;font-weight:900}.week,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.week div{text-align:center;color:var(--muted);font-size:11px;font-weight:800;padding:4px}.cal-day{min-height:72px;border:1px solid var(--line);border-radius:11px;background:var(--card);padding:7px;text-align:left;position:relative;color:var(--text)}.cal-day.today{outline:2px solid var(--accent)}.cal-day.muted{opacity:.35}.cal-day.has-study{background:#f0fff7}.cal-hours{font-size:11px;color:var(--green);font-weight:800;position:absolute;bottom:7px;left:7px}
 .room{position:relative;height:500px;border-radius:24px;overflow:hidden;border:4px solid #d6c4a9;background:linear-gradient(#dcebf7 0 65%,#c98f61 65%)}.room.theme2{background:linear-gradient(#f8dfb8 0 65%,#a87355 65%)}.room.theme3{background:linear-gradient(#d8f0df 0 65%,#8fbd89 65%)}.room.theme4{background:linear-gradient(#e7dcf5 0 65%,#a98bbd 65%)}.room-wall{position:absolute;left:10%;top:12%;width:23%;height:22%;border:5px solid rgba(100,80,70,.3);border-radius:8px;background:rgba(255,255,255,.45)}.desk{position:absolute;left:33%;bottom:17%;width:38%;height:10%;background:#8a5d40;border-radius:7px}.desk-leg{position:absolute;bottom:-170%;width:7%;height:170%;background:#704832}.leg1{left:5%}.leg2{right:5%}.room-bunny{position:absolute;font-size:85px;left:47%;bottom:22%;z-index:3}.room-item{position:absolute;font-size:45px;cursor:grab;user-select:none;z-index:4;touch-action:none}.room-item.selected{outline:2px dashed var(--accent);border-radius:8px}
@@ -58,11 +58,14 @@
 
 <section class="page" id="page-timer"><div class="grid2">
 <div class="card timer"><div class="section-head"><h2>Study Timer</h2><span class="muted" id="timerState">Ready</span></div>
+<div class="timer-input"><label for="sessionNameInput">Session name</label><input class="input" id="sessionNameInput" type="text" maxlength="60" placeholder="e.g. Java, DSA, Mathematics"></div>
 <div class="timer-input"><label for="durationInput">Minutes</label><input type="number" min="1" max="600" id="durationInput" value="25"></div>
 <div class="presets"><button class="preset active" data-min="25">25 min</button><button class="preset" data-min="50">50 min</button><button class="preset" data-min="90">90 min</button><button class="preset" data-min="120">120 min</button></div>
 <div class="timer-display" id="timerDisplay">25:00</div><div class="timer-controls"><button class="btn primary" id="startTimer">Start</button><button class="btn" id="stopTimer">Stop</button><button class="btn" id="resetTimer">Reset</button></div><p class="muted">Only completed sessions earn rewards. Stopping cancels the session.</p></div>
 <div class="card"><div class="section-head"><h2>Session rewards</h2></div><div class="notice">Complete a session to earn coins and XP. Rewards are based on the selected duration.</div><div style="margin-top:16px" id="rewardPreview"></div></div>
-</div></section>
+</div>
+<div class="card" style="margin-top:16px"><div class="section-head"><h2>Session History</h2><span class="muted">Completed study sessions</span></div><div id="sessionHistory" class="session-history"></div></div>
+</section>
 
 <section class="page" id="page-calendar"><div class="section-head"><h2>Study Calendar</h2></div><div class="card">
 <div class="calendar-filter"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="none">No Study</button><button class="filter" data-filter="lt1">&lt;1 hour</button><button class="filter" data-filter="1to3">1–3 hours</button><button class="filter" data-filter="3plus">3+ hours</button></div>
@@ -94,8 +97,8 @@ const SHOP_ITEMS=[
 {id:"silver",name:"Silver Statue",icon:"🥈",price:110,type:"Statue",hours:50},{id:"gold",name:"Gold Statue",icon:"🥇",price:160,type:"Statue",hours:80}];
 const MILESTONES=[{hours:1,reward:"10 coins + 20 XP",coins:10,xp:20},{hours:5,reward:"25 coins + 50 XP",coins:25,xp:50},{hours:10,reward:"50 coins + 75 XP",coins:50,xp:75},{hours:30,reward:"Bronze Statue unlock",coins:0,xp:100},{hours:50,reward:"Silver Statue unlock",coins:0,xp:150},{hours:80,reward:"Gold Statue unlock",coins:0,xp:250}];
 let state={coins:0,xp:0,level:1,streak:0,totalSeconds:0,tasks:[],sessions:[],purchased:[],positions:{},roomTheme:"1",milestonesClaimed:[]};
-let timer={running:false,deadline:0,durationSeconds:1500,selectedSeconds:1500,raf:null,alarm:false,audio:null};
-let calendarDate=new Date(2026,7,10),calendarFilter="all",pendingAction=null;
+let timer={running:false,deadline:0,durationSeconds:1500,selectedSeconds:1500,raf:null,alarm:false,audio:null,sessionName:"",alarmOscillator:null,alarmGain:null};
+let calendarDate=new Date(2026,7,10),calendarFilter="all",pendingAction=null,sessionHistoryDate=null;
 
 function $(id){return document.getElementById(id)}
 function localKey(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
@@ -121,20 +124,98 @@ function setDuration(minutes){if(timer.running){toast("Stop the timer before cha
 $("durationInput").addEventListener("change",e=>setDuration(e.target.value));document.querySelectorAll(".preset").forEach(b=>b.addEventListener("click",()=>setDuration(b.dataset.min)));
 function timerRemaining(){return timer.running?Math.max(0,timer.deadline-Date.now())/1000:timer.durationSeconds}
 function formatTime(s){const n=Math.max(0,Math.ceil(s)),m=Math.floor(n/60),r=n%60;return `${String(m).padStart(2,"0")}:${String(r).padStart(2,"0")}`}
-function renderTimer(){const rem=timerRemaining();$("timerDisplay").textContent=formatTime(rem);$("timerState").textContent=timer.running?"Studying…":timer.alarm?"Complete":"Ready";const mins=timer.selectedSeconds/60;$("rewardPreview").innerHTML=`<p>Selected session: <b>${mins} min</b></p><p>On completion: <b>+${Math.max(1,Math.floor(mins/10))} coins</b> and <b>+${Math.max(5,Math.floor(mins*2))} XP</b></p>`}
-function startTimer(){if(timer.running)return;setDuration($("durationInput").value);timer.running=true;timer.deadline=Date.now()+timer.selectedSeconds*1000;$("durationInput").disabled=true;document.querySelectorAll(".preset").forEach(b=>b.disabled=true);renderTimer();timerTick();toast("Study session started.")}
-function timerTick(){if(!timer.running){renderTimer();return}if(timer.deadline-Date.now()<=0){completeSession();return}renderTimer();timer.raf=requestAnimationFrame(timerTick)}
-function stopTimer(){if(timer.alarm){stopAlarm();return}if(!timer.running){toast("Timer is not running.");return}timer.running=false;if(timer.raf)cancelAnimationFrame(timer.raf);timer.raf=null;timer.durationSeconds=timer.selectedSeconds;$("durationInput").disabled=false;document.querySelectorAll(".preset").forEach(b=>b.disabled=false);renderTimer();toast("Session cancelled. No reward earned.")}
-function resetTimer(){if(timer.alarm)stopAlarm();if(timer.running){timer.running=false;if(timer.raf)cancelAnimationFrame(timer.raf);timer.raf=null}timer.durationSeconds=timer.selectedSeconds;$("durationInput").disabled=false;document.querySelectorAll(".preset").forEach(b=>b.disabled=false);renderTimer();toast("Timer reset.")}
+function renderTimer(){const rem=timerRemaining();$("timerDisplay").textContent=formatTime(rem);$("timerState").textContent=timer.running?"Studying…":timer.alarm?"Complete":"Ready";const mins=timer.selectedSeconds/60;const name=timer.sessionName||$("sessionNameInput").value.trim()||"Untitled session";$("rewardPreview").innerHTML=`<p>Session: <b>${escapeHtml(name)}</b></p><p>Selected duration: <b>${mins} min</b></p><p>On completion: <b>+${Math.max(1,Math.floor(mins/10))} coins</b> and <b>+${Math.max(5,Math.floor(mins*2))} XP</b></p>`;renderSessionHistory()}
+function startTimer(){if(timer.running)return;setDuration($("durationInput").value);timer.sessionName=$("sessionNameInput").value.trim()||"Study Session";$("sessionNameInput").value=timer.sessionName;prepareAlarmAudio();timer.running=true;timer.deadline=Date.now()+timer.selectedSeconds*1000;$("durationInput").disabled=true;$("sessionNameInput").disabled=true;document.querySelectorAll(".preset").forEach(b=>b.disabled=true);renderTimer();timerTick();toast(`Study session started: ${timer.sessionName}`)}
+function timerTick(){if(!timer.running){renderTimer();return}const left=timer.deadline-Date.now();if(left<=0){completeSession();return}renderTimer();clearTimeout(timer.raf);timer.raf=setTimeout(timerTick,Math.min(250,Math.max(50,left)))}
+function stopTimer(){if(timer.alarm){stopAlarm();return}if(!timer.running){toast("Timer is not running.");return}timer.running=false;if(timer.raf)clearTimeout(timer.raf);timer.raf=null;timer.durationSeconds=timer.selectedSeconds;$("durationInput").disabled=false;$("sessionNameInput").disabled=false;document.querySelectorAll(".preset").forEach(b=>b.disabled=false);renderTimer();toast("Session cancelled. No reward earned.")}
+function resetTimer(){if(timer.alarm)stopAlarm();if(timer.running){timer.running=false;if(timer.raf)clearTimeout(timer.raf);timer.raf=null}timer.durationSeconds=timer.selectedSeconds;$("durationInput").disabled=false;$("sessionNameInput").disabled=false;document.querySelectorAll(".preset").forEach(b=>b.disabled=false);renderTimer();toast("Timer reset.")}
 function addXP(amount){state.xp+=amount;while(state.xp>=XP_PER_LEVEL*state.level){state.xp-=XP_PER_LEVEL*state.level;state.level++;toast(`Level up! Level ${state.level}`)}}
-function completeSession(){timer.running=false;if(timer.raf)cancelAnimationFrame(timer.raf);timer.raf=null;const seconds=timer.selectedSeconds,coins=Math.max(1,Math.floor(seconds/600)),xp=Math.max(5,Math.floor(seconds/60*2));state.sessions.push({id:Date.now().toString(36),date:todayKey(),seconds,completed:true,completedAt:new Date().toISOString(),coins,xp});state.totalSeconds+=seconds;state.coins+=coins;addXP(xp);state.streak=calculateStreak();save();$("durationInput").disabled=false;document.querySelectorAll(".preset").forEach(b=>b.disabled=false);startAlarm();renderDashboard();renderCalendar();renderShop();renderMilestones()}
-function startAlarm(){timer.alarm=true;$("alarm").classList.add("show");try{const Ctx=window.AudioContext||window.webkitAudioContext;if(Ctx){const ctx=new Ctx();timer.audio=ctx;const beep=()=>{if(!timer.alarm){ctx.close();return}const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=880;g.gain.value=.12;o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.35);setTimeout(beep,700)};beep()}}catch(e){console.warn(e)}}
-function stopAlarm(){timer.alarm=false;$("alarm").classList.remove("show");if(timer.audio){timer.audio.close().catch(()=>{});timer.audio=null}timer.durationSeconds=timer.selectedSeconds;renderTimer()}
-$("startTimer").addEventListener("click",startTimer);$("stopTimer").addEventListener("click",stopTimer);$("resetTimer").addEventListener("click",resetTimer);$("stopAlarm").addEventListener("click",stopAlarm);document.addEventListener("visibilitychange",()=>{if(!document.hidden&&timer.running)timerTick()});
+function completeSession(){timer.running=false;if(timer.raf)clearTimeout(timer.raf);timer.raf=null;const seconds=timer.selectedSeconds,coins=Math.max(1,Math.floor(seconds/600)),xp=Math.max(5,Math.floor(seconds/60*2));const sessionName=timer.sessionName||$("sessionNameInput").value.trim()||"Study Session";state.sessions.push({id:Date.now().toString(36),date:todayKey(),seconds,completed:true,completedAt:new Date().toISOString(),name:sessionName,coins,xp});state.totalSeconds+=seconds;state.coins+=coins;addXP(xp);state.streak=calculateStreak();save();$("durationInput").disabled=false;$("sessionNameInput").disabled=false;startAlarm();renderDashboard();renderCalendar();renderShop();renderMilestones();renderSessionHistory();toast(`Completed: ${sessionName}`)}
+function renderSessionHistory(){
+const box=$("sessionHistory");
+if(!box)return;
+let sessions=state.sessions.filter(s=>s.completed).slice().sort((a,b)=>new Date(b.completedAt||0)-new Date(a.completedAt||0));
+const title=sessionHistoryDate?`Sessions on ${new Date(sessionHistoryDate+"T00:00:00").toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric"})}`:"Session History";
+if(sessionHistoryDate)sessions=sessions.filter(s=>s.date===sessionHistoryDate);
+const clear=sessionHistoryDate?`<button class="btn small" id="clearSessionDate">Show all</button>`:"";
+if(!sessions.length){
+box.innerHTML=`<div class="section-head"><h3>${title}</h3>${clear}</div><div class="session-empty">${sessionHistoryDate?"No completed study sessions on this date.":"No completed sessions yet."}</div>`;
+if($("clearSessionDate"))$("clearSessionDate").addEventListener("click",()=>{sessionHistoryDate=null;renderSessionHistory()});
+return;
+}
+box.innerHTML=`<div class="section-head"><h3>${title}</h3>${clear}</div>`+sessions.slice(0,50).map(s=>{
+const name=escapeHtml(s.name||"Study Session");
+const mins=Math.floor((s.seconds||0)/60);
+const date=new Date(s.completedAt||s.date).toLocaleString([], {dateStyle:"medium",timeStyle:"short"});
+return `<div class="session-row"><div><strong>${name}</strong><div class="session-meta">${date} • ${mins} min</div></div><div class="session-meta">+${s.coins||0} coins • +${s.xp||0} XP</div></div>`;
+}).join("");
+if($("clearSessionDate"))$("clearSessionDate").addEventListener("click",()=>{sessionHistoryDate=null;renderSessionHistory()});
+}
+function prepareAlarmAudio(){
+try{
+  const Ctx=window.AudioContext||window.webkitAudioContext;
+  if(!Ctx)return;
+  if(!timer.audio)timer.audio=new Ctx();
+  if(timer.audio.state==="suspended")timer.audio.resume().catch(()=>{});
+}catch(e){
+  console.warn("Audio unavailable:",e);
+}
+}
+
+function startAlarm(){
+timer.alarm=true;
+$("alarm").classList.add("show");
+try{
+  prepareAlarmAudio();
+  const ctx=timer.audio;
+  if(!ctx)return;
+
+  // Keep the alarm genuinely continuous until Stop Alarm is pressed.
+  // A single oscillator is kept running; the browser does not need a
+  // JavaScript interval/timeout to keep producing sound.
+  const osc=ctx.createOscillator();
+  const gain=ctx.createGain();
+
+  osc.type="sine";
+  osc.frequency.setValueAtTime(880,ctx.currentTime);
+  gain.gain.setValueAtTime(0.0001,ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.22,ctx.currentTime+0.05);
+
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start();
+
+  timer.alarmOscillator=osc;
+  timer.alarmGain=gain;
+}catch(e){
+  console.warn("Alarm unavailable:",e);
+}}
+
+
+function stopAlarm(){
+timer.alarm=false;
+$("alarm").classList.remove("show");
+
+if(timer.alarmOscillator){
+  try{timer.alarmOscillator.stop()}catch(e){}
+  timer.alarmOscillator=null;
+}
+if(timer.alarmGain){
+  try{timer.alarmGain.disconnect()}catch(e){}
+  timer.alarmGain=null;
+}
+if(timer.audio){
+  try{timer.audio.suspend().catch(()=>{})}catch(e){}
+}
+timer.durationSeconds=timer.selectedSeconds;
+renderTimer();
+}
+$("sessionNameInput").addEventListener("input",()=>{if(!timer.running){timer.sessionName=$("sessionNameInput").value.trim();renderTimer()}});renderSessionHistory();
+$("startTimer").addEventListener("click",startTimer);$("stopTimer").addEventListener("click",stopTimer);$("resetTimer").addEventListener("click",resetTimer);$("stopAlarm").addEventListener("click",stopAlarm);document.addEventListener("visibilitychange",()=>{if(timer.running)timerTick()});
 
 function calendarSeconds(key){return daySeconds(key)}
 function matchesFilter(sec){if(calendarFilter==="all")return true;if(calendarFilter==="none")return sec===0;if(calendarFilter==="lt1")return sec>0&&sec<3600;if(calendarFilter==="1to3")return sec>=3600&&sec<10800;if(calendarFilter==="3plus")return sec>=10800;return true}
-function renderCalendar(){ $("monthTitle").textContent=calendarDate.toLocaleDateString(undefined,{month:"long",year:"numeric"});const y=calendarDate.getFullYear(),m=calendarDate.getMonth(),first=new Date(y,m,1),days=new Date(y,m+1,0).getDate(),start=first.getDay(),total=Math.ceil((start+days)/7)*7,box=$("calendarDays");box.innerHTML="";for(let i=0;i<total;i++){const n=i-start+1,cell=document.createElement("button");cell.className="cal-day";if(n<1){cell.textContent=new Date(y,m,0).getDate()+n;cell.classList.add("muted")}else if(n>days){cell.textContent=n-days;cell.classList.add("muted")}else{const key=`${y}-${String(m+1).padStart(2,"0")}-${String(n).padStart(2,"0")}`,sec=calendarSeconds(key);if(key===todayKey())cell.classList.add("today");if(sec)cell.classList.add("has-study");cell.innerHTML=`<b>${n}</b>${sec?`<span class="cal-hours">${(sec/3600).toFixed(1)}h</span>`:""}`;if(!matchesFilter(sec))cell.style.display="none";cell.addEventListener("click",()=>toast(sec?`${key}: ${(sec/3600).toFixed(2)} study hours`:`${key}: No study`))}box.appendChild(cell)}}
+function renderCalendar(){ $("monthTitle").textContent=calendarDate.toLocaleDateString(undefined,{month:"long",year:"numeric"});const y=calendarDate.getFullYear(),m=calendarDate.getMonth(),first=new Date(y,m,1),days=new Date(y,m+1,0).getDate(),start=first.getDay(),total=Math.ceil((start+days)/7)*7,box=$("calendarDays");box.innerHTML="";for(let i=0;i<total;i++){const n=i-start+1,cell=document.createElement("button");cell.className="cal-day";if(n<1){cell.textContent=new Date(y,m,0).getDate()+n;cell.classList.add("muted")}else if(n>days){cell.textContent=n-days;cell.classList.add("muted")}else{const key=`${y}-${String(m+1).padStart(2,"0")}-${String(n).padStart(2,"0")}`,sec=calendarSeconds(key);if(key===todayKey())cell.classList.add("today");if(sec)cell.classList.add("has-study");const daySessions=state.sessions.filter(s=>s.completed&&s.date===key);cell.innerHTML=`<b>${n}</b>${sec?`<span class="cal-hours">${(sec/3600).toFixed(1)}h</span>`:""}${daySessions.length?`<span class="cal-hours">${daySessions.length} session${daySessions.length===1?"":"s"}</span>`:""}`;if(!matchesFilter(sec))cell.style.display="none";cell.addEventListener("click",()=>{sessionHistoryDate=key;renderSessionHistory();const history=$("sessionHistory");if(history)history.scrollIntoView({behavior:"smooth",block:"start"});toast(sec?`${key}: ${(sec/3600).toFixed(2)} study hours`:`${key}: No study`)})}box.appendChild(cell)}}
 $("prevMonth").addEventListener("click",()=>{calendarDate.setMonth(calendarDate.getMonth()-1);renderCalendar()});$("nextMonth").addEventListener("click",()=>{calendarDate.setMonth(calendarDate.getMonth()+1);renderCalendar()});document.querySelectorAll(".filter[data-filter]").forEach(b=>b.addEventListener("click",()=>{calendarFilter=b.dataset.filter;document.querySelectorAll(".filter[data-filter]").forEach(x=>x.classList.toggle("active",x===b));renderCalendar()}));
 
 function renderRoom(){const room=$("room");room.className=`room theme${state.roomTheme||"1"}`;room.querySelectorAll(".room-item").forEach(x=>x.remove());state.purchased.forEach(id=>{const item=SHOP_ITEMS.find(x=>x.id===id);if(!item)return;const el=document.createElement("div");el.className="room-item";el.dataset.id=id;el.textContent=item.icon;el.title=`${item.name} — drag to move`;const pos=state.positions[id]||{x:50,y:30};state.positions[id]=pos;el.style.left=pos.x+"%";el.style.top=pos.y+"%";el.addEventListener("pointerdown",startDrag);room.appendChild(el)});document.querySelectorAll(".room-theme").forEach(b=>b.classList.toggle("active",b.dataset.theme===String(state.roomTheme)))}

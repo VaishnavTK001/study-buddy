@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Journal</title>
+<style>
+:root{--bg:#f5f6fb;--card:#fff;--text:#202331;--muted:#73798a;--primary:#6c63ff;--primary2:#8a84ff;--border:#e6e8f0;--danger:#e05252;--shadow:0 10px 30px rgba(35,40,70,.08);--radius:18px;--font:16px}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:var(--font)}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}.app{display:flex;min-height:100vh}.sidebar{width:250px;background:var(--card);border-right:1px solid var(--border);padding:22px 16px;position:sticky;top:0;height:100vh}.brand{font-weight:800;font-size:23px;padding:8px 12px 24px;display:flex;gap:10px;align-items:center}.brand span{background:var(--primary);color:#fff;border-radius:11px;padding:8px}.nav{display:grid;gap:7px}.nav button{background:transparent;color:var(--muted);text-align:left;padding:12px 14px;border-radius:12px;font-weight:650}.nav button:hover,.nav button.active{background:#eeedff;color:var(--primary)}.main{flex:1;min-width:0;padding:28px;max-width:1500px;margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:24px}.mobile-menu{display:none}.page{display:none}.page.active{display:block}.hero{background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;padding:28px;border-radius:24px;box-shadow:var(--shadow);margin-bottom:20px}.hero h1{margin:5px 0;font-size:clamp(28px,4vw,42px)}.hero p{margin:5px 0;opacity:.9}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}.stat .label{color:var(--muted);font-size:13px}.stat .value{font-size:29px;font-weight:800;margin-top:7px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 15px}.section-head h2{margin:0}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.btn{padding:10px 15px;border-radius:11px;background:#ececf4;color:var(--text);font-weight:700}.btn.primary{background:var(--primary);color:#fff}.btn.danger{background:#ffe9e9;color:var(--danger)}.btn.small{padding:7px 10px;font-size:13px}.toolbar{display:flex;gap:10px;flex-wrap:wrap}.toolbar input,.toolbar select,.input,.textarea{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:11px 13px;color:var(--text);outline:none}.toolbar input:focus,.toolbar select:focus,.input:focus,.textarea:focus{border-color:var(--primary)}.calendar-wrap{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.calendar-title{font-size:20px;font-weight:800}.week,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.week div{text-align:center;color:var(--muted);font-size:12px;font-weight:700;padding:5px}.day{min-height:72px;border:1px solid var(--border);background:var(--card);border-radius:12px;padding:8px;position:relative;text-align:left;color:var(--text)}.day:hover{border-color:var(--primary)}.day.muted{opacity:.38}.day.today{outline:2px solid var(--primary)}.day.selected{background:#eeedff;border-color:var(--primary)}.dot{position:absolute;bottom:7px;left:9px;width:7px;height:7px;background:var(--primary);border-radius:50%}.mood-dot{position:absolute;right:7px;bottom:4px;font-size:16px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:750;color:var(--muted)}.textarea{width:100%;min-height:130px;resize:vertical}.journal-meta{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:13px;margin-bottom:15px;flex-wrap:wrap}.moods{display:flex;gap:7px;flex-wrap:wrap}.mood-btn{border:1px solid var(--border);background:var(--card);padding:8px 10px;border-radius:12px}.mood-btn.selected{border-color:var(--primary);background:#eeedff}.photo-preview{max-width:100%;max-height:300px;border-radius:13px;margin-top:10px;display:none}.entry-list{display:grid;gap:12px}.entry-item{padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--card);cursor:pointer}.entry-item:hover{border-color:var(--primary)}.entry-top{display:flex;justify-content:space-between;gap:10px}.preview{color:var(--muted);font-size:14px;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.empty{padding:35px;text-align:center;color:var(--muted)}.notes-area{width:100%;min-height:330px}.settings{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.setting{display:grid;gap:9px}.setting label{font-weight:750}.theme-options{display:flex;gap:8px;flex-wrap:wrap}.theme-btn{width:44px;height:44px;border-radius:12px;border:3px solid var(--card);outline:1px solid var(--border)}.theme-btn.selected{outline:3px solid var(--primary)}.theme-purple{background:#6c63ff}.theme-blue{background:#2784ff}.theme-green{background:#2e9d72}.theme-orange{background:#ef8b2c}.theme-pink{background:#e95c9c}.dark{--bg:#151722;--card:#202330;--text:#f3f4f8;--muted:#a8adbd;--border:#343849;--shadow:0 10px 30px rgba(0,0,0,.22)}.dark .nav button:hover,.dark .nav button.active,.dark .mood-btn.selected,.dark .day.selected{background:#302e52}.backup-box{display:grid;gap:12px}.hidden{display:none!important}.footer-note{color:var(--muted);font-size:12px;margin-top:18px}.toast{position:fixed;right:20px;bottom:20px;background:#202331;color:white;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:translateY(0)}.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal.show{display:flex}.modal-box{background:var(--card);color:var(--text);max-width:460px;width:100%;border-radius:18px;padding:22px}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}.calendar-wrap,.two{grid-template-columns:1fr}.sidebar{position:fixed;z-index:9;transform:translateX(-100%);transition:.25s}.sidebar.open{transform:translateX(0)}.mobile-menu{display:inline-block}.main{padding:18px}.settings{grid-template-columns:1fr}}
+@media(max-width:600px){.grid,.form-grid{grid-template-columns:1fr}.topbar{align-items:flex-start}.day{min-height:58px;padding:6px;font-size:13px}.week div{font-size:10px}.hero{padding:21px}.card{padding:15px}.main{padding:12px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><span>✎</span> My Journal</div>
+  <nav class="nav">
+    <button data-page="home" class="active">🏠 Dashboard</button>
+    <button data-page="calendar">📅 Calendar</button>
+    <button data-page="journal">✍️ Daily Journal</button>
+    <button data-page="history">📖 History</button>
+    <button data-page="notes">📝 Notes</button>
+    <button data-page="stats">📊 Statistics</button>
+    <button data-page="settings">⚙️ Settings</button>
+    <button data-page="backup">🔒 Data & Backup</button>
+  </nav>
+</aside>
+<main class="main">
+  <div class="topbar"><button class="btn mobile-menu" id="menuBtn">☰</button><div></div><button class="btn" id="goToday">Today</button></div>
+
+  <section class="page active" id="page-home">
+    <div class="hero"><div id="homeDate"></div><h1 id="greeting"></h1><p id="homeSub"></p></div>
+    <div class="grid">
+      <div class="card stat"><div class="label">Today's status</div><div class="value" id="todayStatus">Not written</div></div>
+      <div class="card stat"><div class="label">Journal entries</div><div class="value" id="entryCount">0</div></div>
+      <div class="card stat"><div class="label">Current streak</div><div class="value" id="currentStreak">0</div></div>
+      <div class="card stat"><div class="label">Days journaled</div><div class="value" id="daysJournaled">0</div></div>
+    </div>
+    <div class="two">
+      <div class="card"><div class="section-head"><h2>Today's journal</h2><button class="btn primary small" data-page="journal">Open</button></div><div id="todayPreview" class="empty">No journal for today yet.</div></div>
+      <div class="card"><div class="section-head"><h2>Quick note</h2><button class="btn small" data-page="notes">Open notes</button></div><textarea id="quickNote" class="textarea" placeholder="Write something quickly..."></textarea><button class="btn primary" id="saveQuickNote">Save note</button></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-calendar">
+    <div class="section-head"><h2>Calendar</h2><button class="btn primary" data-page="journal">Write journal</button></div>
+    <div class="calendar-wrap">
+      <div class="card"><div class="calendar-head"><button class="btn small" id="prevMonth">←</button><div class="calendar-title" id="calendarTitle"></div><button class="btn small" id="nextMonth">→</button></div><div class="week"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div><div class="days" id="calendarDays"></div></div>
+      <div class="card"><h2 id="selectedDateTitle">Selected day</h2><div id="selectedDayInfo" class="empty">Select a date.</div></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-journal">
+    <div class="section-head"><h2>Daily Journal</h2><div class="toolbar"><input type="date" id="journalDate"><button class="btn" id="loadJournalDate">Load</button></div></div>
+    <div class="card">
+      <div class="journal-meta"><span id="journalSavedAt">New entry</span></div>
+      <div class="form-grid">
+        <div class="field full"><label>Today's thoughts</label><textarea id="thoughts" class="textarea"></textarea></div>
+        <div class="field full"><label>What I did today</label><textarea id="didToday" class="textarea"></textarea></div>
+        <div class="field full"><label>What I learned</label><textarea id="learned" class="textarea"></textarea></div>
+        <div class="field"><label>What I am grateful for</label><textarea id="grateful" class="textarea"></textarea></div>
+        <div class="field"><label>Goals for tomorrow</label><textarea id="goals" class="textarea"></textarea></div>
+        <div class="field full"><label>Mood</label><div class="moods" id="moods"></div></div>
+        <div class="field full"><label>Photo / Memory</label><input type="file" id="photoInput" accept="image/*"><img id="photoPreview" class="photo-preview" alt="Journal memory"><button class="btn small hidden" id="removePhoto">Remove photo</button></div>
+      </div>
+      <div class="toolbar" style="margin-top:18px"><button class="btn primary" id="saveJournal">Save</button><button class="btn" id="editJournal">Edit</button><button class="btn danger" id="deleteJournal">Delete</button><button class="btn" id="clearJournal">Clear</button></div>
+      <div class="footer-note">Entries are saved only in this browser using localStorage.</div>
+    </div>
+  </section>
+
+  <section class="page" id="page-history">
+    <div class="section-head"><h2>Journal History</h2></div>
+    <div class="card">
+      <div class="toolbar" style="margin-bottom:16px"><input id="historySearch" placeholder="Search entries..."><select id="historySort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select><input type="month" id="historyMonth"><button class="btn" id="clearHistoryFilters">Clear filters</button></div>
+      <div id="historyList" class="entry-list"></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-notes">
+    <div class="section-head"><h2>Notes</h2><button class="btn primary" id="saveNotes">Save notes</button></div>
+    <div class="card"><textarea id="notesText" class="textarea notes-area" placeholder="Quick notes, ideas, reminders..."></textarea><div class="footer-note" id="notesSaved"></div></div>
+  </section>
+
+  <section class="page" id="page-stats">
+    <div class="section-head"><h2>Statistics</h2></div>
+    <div class="grid">
+      <div class="card stat"><div class="label">Total journal entries</div><div class="value" id="sEntries">0</div></div>
+      <div class="card stat"><div class="label">Current streak</div><div class="value" id="sCurrent">0</div></div>
+      <div class="card stat"><div class="label">Longest streak</div><div class="value" id="sLongest">0</div></div>
+      <div class="card stat"><div class="label">Days journaled this month</div><div class="value" id="sMonth">0</div></div>
+      <div class="card stat"><div class="label">Days journaled this year</div><div class="value" id="sYear">0</div></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-settings">
+    <div class="section-head"><h2>Customization</h2></div>
+    <div class="settings">
+      <div class="card setting"><label>Journal theme</label><div class="theme-options" id="themeOptions"><button class="theme-btn theme-purple" data-theme="purple"></button><button class="theme-btn theme-blue" data-theme="blue"></button><button class="theme-btn theme-green" data-theme="green"></button><button class="theme-btn theme-orange" data-theme="orange"></button><button class="theme-btn theme-pink" data-theme="pink"></button></div></div>
+      <div class="card setting"><label>Background</label><select id="backgroundSelect"><option value="default">Default</option><option value="soft">Soft</option><option value="warm">Warm</option><option value="cool">Cool</option></select></div>
+      <div class="card setting"><label>Font size</label><select id="fontSize"><option value="14">Small</option><option value="16">Normal</option><option value="18">Large</option><option value="20">Extra large</option></select></div>
+      <div class="card setting"><label>Light / dark mode</label><select id="modeSelect"><option value="light">Light</option><option value="dark">Dark</option></select></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-backup">
+    <div class="section-head"><h2>Data & Backup</h2></div>
+    <div class="two">
+      <div class="card backup-box"><h3>Export / Backup</h3><p>Download all journal entries, notes, and settings as a JSON backup.</p><button class="btn primary" id="exportData">Export journal</button></div>
+      <div class="card backup-box"><h3>Import / Restore</h3><p>Restore a previously exported JSON backup.</p><input type="file" id="importFile" accept=".json,application/json"><button class="btn" id="importData">Import backup</button></div>
+      <div class="card backup-box"><h3>Delete everything</h3><p>This permanently removes all local journal data from this browser.</p><button class="btn danger" id="deleteAll">Delete all data</button></div>
+    </div>
+  </section>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<div class="modal" id="confirmModal"><div class="modal-box"><h3 id="modalTitle">Confirm</h3><p id="modalText"></p><div class="modal-actions"><button class="btn" id="modalCancel">Cancel</button><button class="btn danger" id="modalConfirm">Confirm</button></div></div></div>
+
+<script>
+"use strict";
+
+const KEY="myJournalApp_v1";
+const MOODS=[
+  {id:"happy",label:"Happy",emoji:"😄"},
+  {id:"good",label:"Good",emoji:"🙂"},
+  {id:"normal",label:"Normal",emoji:"😐"},
+  {id:"sad",label:"Sad",emoji:"😔"},
+  {id:"angry",label:"Angry",emoji:"😡"},
+  {id:"tired",label:"Tired",emoji:"😴"}
+];
+const THEMES={
+  purple:["#6c63ff","#8a84ff"],blue:["#2784ff","#4fa0ff"],green:["#2e9d72","#56b889"],orange:["#ef8b2c","#f4ad52"],pink:["#e95c9c","#f184b3"]
+};
+let data={entries:{},notes:"",settings:{theme:"purple",background:"default",fontSize:16,mode:"light"}};
+let selectedDate=todayKey(), calendarDate=new Date(), currentPhoto=null, editing=false, pendingConfirm=null;
+
+function $(id){return document.getElementById(id)}
+function todayKey(d=new Date()){return localDateKey(d)}
+function localDateKey(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");return `${y}-${m}-${day}`}
+function parseKey(key){const [y,m,d]=key.split("-").map(Number);return new Date(y,m-1,d)}
+function saveData(){localStorage.setItem(KEY,JSON.stringify(data))}
+function loadData(){try{const raw=localStorage.getItem(KEY);if(raw){const parsed=JSON.parse(raw);data={...data,...parsed,entries:parsed.entries||{},settings:{...data.settings,...(parsed.settings||{})}}}}catch(e){console.error("Load error:",e);toast("Could not load saved data.")}}
+function toast(msg){const el=$("toast");el.textContent=msg;el.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("show"),2200)}
+function formatDate(key,opts={weekday:"long",year:"numeric",month:"long",day:"numeric"}){return parseKey(key).toLocaleDateString(undefined,opts)}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function entryKeys(){return Object.keys(data.entries).filter(k=>data.entries[k])}
+function hasContent(e){return e && [e.thoughts,e.didToday,e.learned,e.grateful,e.goals,e.photo].some(v=>String(v||"").trim())}
+function moodObj(id){return MOODS.find(m=>m.id===id)||MOODS[2]}
+
+function applySettings(){
+  const theme=data.settings.theme||"purple", pair=THEMES[theme]||THEMES.purple;
+  document.documentElement.style.setProperty("--primary",pair[0]);document.documentElement.style.setProperty("--primary2",pair[1]);
+  document.documentElement.style.setProperty("--font",(Number(data.settings.fontSize)||16)+"px");
+  document.body.classList.toggle("dark",data.settings.mode==="dark");
+  const backgrounds={default:"#f5f6fb",soft:"#f3f0f8",warm:"#faf4ed",cool:"#eef5f8"};
+  document.documentElement.style.setProperty("--bg",backgrounds[data.settings.background]||backgrounds.default);
+  $("backgroundSelect").value=data.settings.background||"default";$("fontSize").value=String(data.settings.fontSize||16);$("modeSelect").value=data.settings.mode||"light";
+  document.querySelectorAll(".theme-btn").forEach(b=>b.classList.toggle("selected",b.dataset.theme===theme));
+}
+
+function showPage(name){
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+name));
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===name));
+  $("sidebar").classList.remove("open");
+  if(name==="home")renderHome();
+  if(name==="calendar")renderCalendar();
+  if(name==="journal")loadJournal(selectedDate);
+  if(name==="history")renderHistory();
+  if(name==="notes")loadNotes();
+  if(name==="stats")renderStats();
+  if(name==="settings")applySettings();
+}
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+
+function renderHome(){
+  const now=new Date(), hour=now.getHours();
+  const greeting=hour<5?"Good night":hour<12?"Good morning":hour<17?"Good afternoon":hour<21?"Good evening":"Good night";
+  $("homeDate").textContent=now.toLocaleDateString(undefined,{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+  $("greeting").textContent=greeting;
+  $("homeSub").textContent="A small page for your thoughts, memories, and progress.";
+  const e=data.entries[todayKey()];
+  $("todayStatus").textContent=hasContent(e)?"Completed":"Not written";
+  $("entryCount").textContent=entryKeys().length;$("daysJournaled").textContent=entryKeys().length;$("currentStreak").textContent=currentStreak();
+  $("todayPreview").innerHTML=e&&hasContent(e)?`<strong>${escapeHtml(moodObj(e.mood).emoji+" "+moodObj(e.mood).label)}</strong><p>${escapeHtml((e.thoughts||e.didToday||"").slice(0,220))}</p>`:"No journal for today yet.";
+  $("quickNote").value="";
+}
+function currentStreak(){
+  const keys=new Set(entryKeys());let d=new Date(),count=0;
+  while(keys.has(localDateKey(d))){count++;d.setDate(d.getDate()-1)}
+  return count;
+}
+function streaks(){
+  const keys=entryKeys().sort(), set=new Set(keys);let longest=0,cur=0,prev=null;
+  keys.forEach(k=>{const d=parseKey(k);if(prev){const diff=Math.round((d-prev)/86400000);cur=diff===1?cur+1:1}else cur=1;longest=Math.max(longest,cur);prev=d});
+  return {longest,current:currentStreak(),set};
+}
+function renderStats(){
+  const s=streaks(), now=new Date(), month=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`,year=String(now.getFullYear());
+  $("sEntries").textContent=entryKeys().length;$("sCurrent").textContent=s.current;$("sLongest").textContent=s.longest;
+  $("sMonth").textContent=entryKeys().filter(k=>k.startsWith(month)).length;$("sYear").textContent=entryKeys().filter(k=>k.startsWith(year)).length;
+}
+
+function renderCalendar(){
+  const y=calendarDate.getFullYear(),m=calendarDate.getMonth();
+  $("calendarTitle").textContent=calendarDate.toLocaleDateString(undefined,{month:"long",year:"numeric"});
+  const first=new Date(y,m,1), days=new Date(y,m+1,0).getDate(), start=first.getDay(), total=Math.ceil((start+days)/7)*7, box=$("calendarDays");box.innerHTML="";
+  for(let i=0;i<total;i++){
+    const n=i-start+1, cell=document.createElement("button");cell.className="day";
+    if(n<1){const prev=new Date(y,m,0).getDate()+n;cell.innerHTML=`<span>${prev}</span>`;cell.classList.add("muted")}
+    else if(n>days){cell.innerHTML=`<span>${n-days}</span>`;cell.classList.add("muted")}
+    else{
+      const key=`${y}-${String(m+1).padStart(2,"0")}-${String(n).padStart(2,"0")}`,e=data.entries[key];cell.innerHTML=`<span>${n}</span>`;
+      if(key===todayKey())cell.classList.add("today");if(key===selectedDate)cell.classList.add("selected");
+      if(hasContent(e))cell.innerHTML+=`<span class="dot"></span><span class="mood-dot">${escapeHtml(moodObj(e.mood).emoji)}</span>`;
+      cell.addEventListener("click",()=>{selectedDate=key;showSelectedDay();renderCalendar()});
+    }
+    box.appendChild(cell);
+  }
+  showSelectedDay();
+}
+function showSelectedDay(){
+  $("selectedDateTitle").textContent=formatDate(selectedDate);
+  const e=data.entries[selectedDate];
+  $("selectedDayInfo").innerHTML=e&&hasContent(e)?`<div style="font-size:28px">${escapeHtml(moodObj(e.mood).emoji)}</div><p><b>Mood:</b> ${escapeHtml(moodObj(e.mood).label)}</p><p>${escapeHtml((e.thoughts||e.didToday||"").slice(0,500))}</p><button class="btn primary small" id="calendarOpenJournal">Open journal</button>`:`<p>No journal entry for this date.</p><button class="btn primary small" id="calendarNewJournal">Create journal</button>`;
+  const b=$("calendarOpenJournal")||$("calendarNewJournal");if(b)b.addEventListener("click",()=>showPage("journal"));
+}
+$("prevMonth").addEventListener("click",()=>{calendarDate.setMonth(calendarDate.getMonth()-1);renderCalendar()});
+$("nextMonth").addEventListener("click",()=>{calendarDate.setMonth(calendarDate.getMonth()+1);renderCalendar()});
+$("goToday").addEventListener("click",()=>{selectedDate=todayKey();calendarDate=new Date();showPage("calendar")});
+
+function renderMoods(){
+  $("moods").innerHTML=MOODS.map(m=>`<button type="button" class="mood-btn" data-mood="${m.id}">${m.emoji} ${m.label}</button>`).join("");
+  document.querySelectorAll(".mood-btn").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".mood-btn").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")}));
+}
+function clearForm(){
+  $("thoughts").value="";$("didToday").value="";$("learned").value="";$("grateful").value="";$("goals").value="";
+  document.querySelectorAll(".mood-btn").forEach(b=>b.classList.toggle("selected",b.dataset.mood==="normal"));
+  currentPhoto=null;$("photoInput").value="";$("photoPreview").src="";$("photoPreview").style.display="none";$("removePhoto").classList.add("hidden");$("journalSavedAt").textContent="New entry";editing=false;
+}
+function loadJournal(key){
+  selectedDate=key;$("journalDate").value=key;const e=data.entries[key];
+  clearForm();
+  if(e){$("thoughts").value=e.thoughts||"";$("didToday").value=e.didToday||"";$("learned").value=e.learned||"";$("grateful").value=e.grateful||"";$("goals").value=e.goals||"";document.querySelectorAll(".mood-btn").forEach(b=>b.classList.toggle("selected",b.dataset.mood===(e.mood||"normal")));if(e.photo){currentPhoto=e.photo;$("photoPreview").src=e.photo;$("photoPreview").style.display="block";$("removePhoto").classList.remove("hidden")}$("journalSavedAt").textContent=e.updatedAt?`Last saved: ${new Date(e.updatedAt).toLocaleString()}`:"Saved";editing=false}
+}
+$("journalDate").addEventListener("change",()=>selectedDate=$("journalDate").value);
+$("loadJournalDate").addEventListener("click",()=>loadJournal($("journalDate").value||todayKey()));
+$("saveJournal").addEventListener("click",()=>{
+  const mood=document.querySelector(".mood-btn.selected")?.dataset.mood||"normal";
+  const old=data.entries[selectedDate]||{};
+  const e={thoughts:$("thoughts").value.trim(),didToday:$("didToday").value.trim(),learned:$("learned").value.trim(),grateful:$("grateful").value.trim(),goals:$("goals").value.trim(),mood,photo:currentPhoto||"",createdAt:old.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};
+  if(!hasContent(e)){toast("Write something before saving.");return}
+  data.entries[selectedDate]=e;saveData();editing=false;$("journalSavedAt").textContent=`Last saved: ${new Date(e.updatedAt).toLocaleString()}`;toast("Journal saved.");renderHome();renderCalendar();
+});
+$("editJournal").addEventListener("click",()=>{editing=true;document.querySelectorAll("#page-journal textarea,#page-journal input").forEach(x=>x.disabled=false);toast("You can edit this entry now.")});
+$("deleteJournal").addEventListener("click",()=>{if(!data.entries[selectedDate]){toast("No entry to delete.");return}confirmAction("Delete this journal entry?","This cannot be undone.",()=>{delete data.entries[selectedDate];saveData();clearForm();toast("Entry deleted.");renderCalendar();renderHome()})});
+$("clearJournal").addEventListener("click",()=>confirmAction("Clear this form?","Unsaved text will be removed.",clearForm));
+$("photoInput").addEventListener("change",()=>{
+  const file=$("photoInput").files[0];if(!file)return;
+  if(file.size>4*1024*1024){toast("Please choose an image under 4 MB.");$("photoInput").value="";return}
+  const reader=new FileReader();reader.onload=()=>{currentPhoto=reader.result;$("photoPreview").src=currentPhoto;$("photoPreview").style.display="block";$("removePhoto").classList.remove("hidden")};reader.readAsDataURL(file);
+});
+$("removePhoto").addEventListener("click",()=>{currentPhoto=null;$("photoInput").value="";$("photoPreview").src="";$("photoPreview").style.display="none";$("removePhoto").classList.add("hidden")});
+
+function renderHistory(){
+  const q=$("historySearch").value.toLowerCase().trim(),sort=$("historySort").value,month=$("historyMonth").value;
+  let keys=entryKeys().filter(k=>{const e=data.entries[k],text=[k,e.thoughts,e.didToday,e.learned,e.grateful,e.goals,moodObj(e.mood).label].join(" ").toLowerCase();return(!q||text.includes(q))&&(!month||k.startsWith(month))});
+  keys.sort((a,b)=>sort==="newest"?b.localeCompare(a):a.localeCompare(b));
+  $("historyList").innerHTML=keys.length?keys.map(k=>{const e=data.entries[k],m=moodObj(e.mood);return `<div class="entry-item" data-key="${k}"><div class="entry-top"><strong>${escapeHtml(formatDate(k,{year:"numeric",month:"short",day:"numeric"}))}</strong><span>${m.emoji} ${escapeHtml(m.label)}</span></div><div class="preview">${escapeHtml((e.thoughts||e.didToday||e.learned||"No text").replace(/\s+/g," ").slice(0,180))}</div></div>`}).join(""):`<div class="empty">No journal entries found.</div>`;
+  document.querySelectorAll(".entry-item").forEach(x=>x.addEventListener("click",()=>{selectedDate=x.dataset.key;showPage("journal")}));
+}
+["historySearch","historySort","historyMonth"].forEach(id=>$(id).addEventListener(id==="historySearch"?"input":"change",renderHistory));
+$("clearHistoryFilters").addEventListener("click",()=>{$("historySearch").value="";$("historyMonth").value="";$("historySort").value="newest";renderHistory()});
+
+function loadNotes(){$("notesText").value=data.notes||"";$("notesSaved").textContent=data.notesUpdated?`Last saved: ${new Date(data.notesUpdated).toLocaleString()}`:""}
+$("saveNotes").addEventListener("click",()=>{data.notes=$("notesText").value;data.notesUpdated=new Date().toISOString();saveData();$("notesSaved").textContent=`Last saved: ${new Date(data.notesUpdated).toLocaleString()}`;toast("Notes saved.")});
+$("saveQuickNote").addEventListener("click",()=>{const text=$("quickNote").value.trim();if(!text){toast("Write a note first.");return}data.notes=(data.notes?data.notes+"\n":"")+`[${new Date().toLocaleString()}] ${text}`;data.notesUpdated=new Date().toISOString();saveData();$("quickNote").value="";toast("Quick note saved.");loadNotes()});
+
+document.querySelectorAll(".theme-btn").forEach(b=>b.addEventListener("click",()=>{data.settings.theme=b.dataset.theme;saveData();applySettings()}));
+$("backgroundSelect").addEventListener("change",()=>{data.settings.background=$("backgroundSelect").value;saveData();applySettings()});
+$("fontSize").addEventListener("change",()=>{data.settings.fontSize=Number($("fontSize").value);saveData();applySettings()});
+$("modeSelect").addEventListener("change",()=>{data.settings.mode=$("modeSelect").value;saveData();applySettings()});
+$("menuBtn").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
+
+function confirmAction(title,text,fn){pendingConfirm=fn;$("modalTitle").textContent=title;$("modalText").textContent=text;$("confirmModal").classList.add("show")}
+$("modalCancel").addEventListener("click",()=>{$("confirmModal").classList.remove("show");pendingConfirm=null});
+$("modalConfirm").addEventListener("click",()=>{const fn=pendingConfirm;$("confirmModal").classList.remove("show");pendingConfirm=null;if(fn)fn()});
+
+$("exportData").addEventListener("click",()=>{
+  const payload={app:"My Journal",version:1,exportedAt:new Date().toISOString(),...data};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=url;a.download=`journal-backup-${todayKey()}.json`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);toast("Backup exported.");
+});
+$("importData").addEventListener("click",()=>{
+  const file=$("importFile").files[0];if(!file){toast("Choose a JSON backup first.");return}
+  const reader=new FileReader();reader.onload=()=>{try{const p=JSON.parse(reader.result);if(!p||typeof p.entries!=="object"||typeof p.settings!=="object")throw new Error("Invalid backup");confirmAction("Restore this backup?","Your current journal data will be replaced.",()=>{data={entries:p.entries||{},notes:p.notes||"",notesUpdated:p.notesUpdated||"",settings:{...data.settings,...p.settings}};saveData();loadJournal(selectedDate);applySettings();renderHome();renderCalendar();renderHistory();renderStats();toast("Backup restored.")})}catch(e){console.error(e);toast("Invalid backup file.")}};reader.readAsText(file);
+});
+$("deleteAll").addEventListener("click",()=>confirmAction("Delete all journal data?","Entries, notes, and settings will be permanently removed from this browser.",()=>{localStorage.removeItem(KEY);data={entries:{},notes:"",settings:{theme:"purple",background:"default",fontSize:16,mode:"light"}};applySettings();clearForm();loadNotes();renderHome();renderCalendar();renderHistory();renderStats();toast("All data deleted.")}));
+
+loadData();applySettings();renderMoods();$("journalDate").value=selectedDate;loadJournal(selectedDate);renderHome();renderCalendar();renderHistory();renderStats();
+</script>
+</body>
+</html>

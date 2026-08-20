@@ -101,7 +101,7 @@ const SHOP_ITEMS=[
 {id:"silver",name:"Silver Statue",icon:"🥈",price:110,type:"Statue",hours:50},{id:"gold",name:"Gold Statue",icon:"🥇",price:160,type:"Statue",hours:80}];
 const MILESTONES=[{hours:1,reward:"10 coins + 20 XP",coins:10,xp:20},{hours:5,reward:"25 coins + 50 XP",coins:25,xp:50},{hours:10,reward:"50 coins + 75 XP",coins:50,xp:75},{hours:30,reward:"Bronze Statue unlock",coins:0,xp:100},{hours:50,reward:"Silver Statue unlock",coins:0,xp:150},{hours:80,reward:"Gold Statue unlock",coins:0,xp:250}];
 let state={coins:0,xp:0,level:1,streak:0,totalSeconds:0,tasks:[],sessions:[],purchased:[],positions:{},roomTheme:"1",milestonesClaimed:[]};
-let timer={running:false,deadline:0,durationSeconds:1500,selectedSeconds:1500,raf:null,alarm:false,audio:null,sessionName:"",alarmOscillator:null,alarmGain:null};
+let timer={running:false,deadline:0,durationSeconds:1500,selectedSeconds:1500,raf:null,alarm:false,audio:null,sessionName:"",alarmOscillator:null,alarmGain:null,musicTimer:null};
 let calendarDate=new Date(2026,7,10),calendarFilter="all",pendingAction=null,sessionHistoryDate=null;
 
 function $(id){return document.getElementById(id)}
@@ -112,7 +112,14 @@ function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
 function load(){try{const raw=localStorage.getItem(STORAGE_KEY);if(raw){const x=JSON.parse(raw);state={...state,...x,tasks:Array.isArray(x.tasks)?x.tasks:[],sessions:Array.isArray(x.sessions)?x.sessions:[],purchased:Array.isArray(x.purchased)?x.purchased:[],positions:x.positions||{},milestonesClaimed:Array.isArray(x.milestonesClaimed)?x.milestonesClaimed:[]}}}catch(e){console.error(e)}normalizeProgress();save()}
 function normalizeProgress(){state.totalSeconds=Number(state.totalSeconds)||0;state.coins=Number(state.coins)||0;state.xp=Number(state.xp)||0;state.level=Math.max(1,Number(state.level)||1);while(state.xp>=XP_PER_LEVEL*state.level){state.xp-=XP_PER_LEVEL*state.level;state.level++}state.streak=calculateStreak()}
 function showPage(page){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+page));document.querySelectorAll(".nav button[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));$("sidebar").classList.remove("open");if(page==="dashboard")renderDashboard();if(page==="tasks")renderTasks();if(page==="calendar")renderCalendar();if(page==="room")renderRoom();if(page==="shop")renderShop();if(page==="milestones")renderMilestones()}
-document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));$("menuBtn").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
+document.addEventListener("click",e=>{
+    const pageButton=e.target.closest("[data-page]");
+    if(pageButton){
+        e.preventDefault();
+        showPage(pageButton.dataset.page);
+    }
+});
+$("menuBtn").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
 
 function greeting(){const h=new Date().getHours();return h>=5&&h<12?"Good morning":h>=12&&h<17?"Good afternoon":h>=17&&h<21?"Good evening":"Good night"}
 function daySeconds(key){return state.sessions.filter(s=>s.date===key&&s.completed).reduce((a,s)=>a+Number(s.seconds||0),0)}
@@ -156,64 +163,112 @@ return `<div class="session-row"><div><strong>${name}</strong><div class="sessio
 if($("clearSessionDate"))$("clearSessionDate").addEventListener("click",()=>{sessionHistoryDate=null;renderSessionHistory()});
 }
 function prepareAlarmAudio(){
-try{
-  const Ctx=window.AudioContext||window.webkitAudioContext;
-  if(!Ctx)return;
-  if(!timer.audio)timer.audio=new Ctx();
-  if(timer.audio.state==="suspended")timer.audio.resume().catch(()=>{});
-}catch(e){
-  console.warn("Audio unavailable:",e);
-}
+    try{
+        const Ctx=window.AudioContext||window.webkitAudioContext;
+        if(!Ctx)return;
+
+        if(!timer.audio){
+            timer.audio=new Ctx();
+        }
+
+        if(timer.audio.state==="suspended"){
+            timer.audio.resume().catch(()=>{});
+        }
+    }catch(e){
+        console.warn("Audio unavailable:",e);
+    }
 }
 
 function startAlarm(){
-timer.alarm=true;
-$("alarm").classList.add("show");
-try{
-  prepareAlarmAudio();
-  const ctx=timer.audio;
-  if(!ctx)return;
+    timer.alarm=true;
+    $("alarm").classList.add("show");
 
-  // Keep the alarm genuinely continuous until Stop Alarm is pressed.
-  // A single oscillator is kept running; the browser does not need a
-  // JavaScript interval/timeout to keep producing sound.
-  const osc=ctx.createOscillator();
-  const gain=ctx.createGain();
+    try{
+        prepareAlarmAudio();
+        const ctx=timer.audio;
+        if(!ctx)return;
 
-  osc.type="sine";
-  osc.frequency.setValueAtTime(880,ctx.currentTime);
-  gain.gain.setValueAtTime(0.0001,ctx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.22,ctx.currentTime+0.05);
+        // Comfortable musical melody: C5 -> E5 -> G5 -> E5
+        const notes=[523.25,659.25,783.99,659.25];
+        const noteLength=0.55;
+        const gap=0.08;
+        let step=0;
 
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-  osc.start();
+        const playNote=()=>{
+            if(!timer.alarm || !timer.audio)return;
 
-  timer.alarmOscillator=osc;
-  timer.alarmGain=gain;
-}catch(e){
-  console.warn("Alarm unavailable:",e);
-}}
+            const osc=ctx.createOscillator();
+            const gain=ctx.createGain();
+            const now=ctx.currentTime;
 
+            osc.type="sine";
+            osc.frequency.setValueAtTime(
+                notes[step % notes.length],
+                now
+            );
+
+            gain.gain.setValueAtTime(0.0001,now);
+
+            // Loud but still comfortable.
+            gain.gain.exponentialRampToValueAtTime(
+                0.28,
+                now+0.08
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.0001,
+                now+noteLength
+            );
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start(now);
+            osc.stop(now+noteLength+0.03);
+
+            step++;
+            timer.alarmOscillator=osc;
+            timer.alarmGain=gain;
+
+            timer.musicTimer=setTimeout(
+                playNote,
+                (noteLength+gap)*1000
+            );
+        };
+
+        playNote();
+    }catch(e){
+        console.warn("Alarm unavailable:",e);
+    }
+}
 
 function stopAlarm(){
-timer.alarm=false;
-$("alarm").classList.remove("show");
+    timer.alarm=false;
+    $("alarm").classList.remove("show");
 
-if(timer.alarmOscillator){
-  try{timer.alarmOscillator.stop()}catch(e){}
-  timer.alarmOscillator=null;
+    if(timer.musicTimer){
+        clearTimeout(timer.musicTimer);
+        timer.musicTimer=null;
+    }
+
+    if(timer.alarmOscillator){
+        try{timer.alarmOscillator.stop()}catch(e){}
+        timer.alarmOscillator=null;
+    }
+
+    if(timer.alarmGain){
+        try{timer.alarmGain.disconnect()}catch(e){}
+        timer.alarmGain=null;
+    }
+
+    if(timer.audio){
+        try{timer.audio.suspend().catch(()=>{})}catch(e){}
+    }
+
+    timer.durationSeconds=timer.selectedSeconds;
+    renderTimer();
 }
-if(timer.alarmGain){
-  try{timer.alarmGain.disconnect()}catch(e){}
-  timer.alarmGain=null;
-}
-if(timer.audio){
-  try{timer.audio.suspend().catch(()=>{})}catch(e){}
-}
-timer.durationSeconds=timer.selectedSeconds;
-renderTimer();
-}
+
 $("sessionNameInput").addEventListener("input",()=>{if(!timer.running){timer.sessionName=$("sessionNameInput").value.trim();renderTimer()}});renderSessionHistory();
 $("startTimer").addEventListener("click",startTimer);$("stopTimer").addEventListener("click",stopTimer);$("resetTimer").addEventListener("click",resetTimer);$("stopAlarm").addEventListener("click",stopAlarm);document.addEventListener("visibilitychange",()=>{if(timer.running)timerTick()});
 
